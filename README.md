@@ -9,7 +9,6 @@
     <a><img src="https://img.shields.io/github/forks/feiyu-rs/lime-backend?style=social"></a>
 	<a><img src="https://img.shields.io/github/issues/feiyu-rs/lime-backend"></a>
 	<a><img src="https://img.shields.io/github/repo-size/feiyu-rs/lime-backend"></a>
-	<a><img src="https://img.shields.io/badge/lime-backend-v1.0.0-brightgreen"></a>
 	<a><img src="https://img.shields.io/github/license/feiyu-rs/lime-backend"></a>
 </p>
 
