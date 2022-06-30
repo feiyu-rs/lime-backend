@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id          BigInt   @id(map: "pk_account") @default(autoincrement())
+  user_id     BigInt   @map("userId")
+  name        String   @db.VarChar(15)
+  icon        String
+  status      Int      @db.SmallInt
+  create_time DateTime @map("createTime") @db.Timestamp(6)
+  update_time DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("account")
+}
+
+model AccountDetail {
+  id          BigInt   @id(map: "pk_account_detail") @default(autoincrement())
+  account_id  BigInt   @map("accountId")
+  name        String   @db.VarChar(15)
+  balance     Decimal  @db.Decimal(18, 6)
+  status      Int      @db.SmallInt
+  create_time DateTime @map("createTime") @db.Timestamp(6)
+  update_time DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("account_detail")
+}
+
+model Budget {
+  id                  BigInt   @id(map: "pk_budget") @default(autoincrement())
+  user_id             BigInt   @map("userId")
+  month_budget_amount Decimal? @map("monthBudgetAmount") @db.Decimal(18, 6)
+  day_budget_amount   Decimal? @map("dayBudgetAmount") @db.Decimal(18, 6)
+  budget_start_day    Int?     @map("budgetStartDay") @db.SmallInt
+  status              Int      @db.SmallInt
+  create_time         DateTime @map("createTime") @db.Timestamp(6)
+  update_time         DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("budget")
+}
+
+model Ledger {
+  id          BigInt   @id(map: "pk_ledger") @default(autoincrement())
+  name        String   @db.VarChar(100)
+  synopsis    String?  @db.VarChar(200)
+  theme_color String?  @map("themeColor") @db.VarChar(50)
+  cover_image String?  @map("coverImage")
+  status      Int      @db.SmallInt
+  create_time DateTime @map("createTime") @db.Timestamp(6)
+  update_time DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("ledger")
+}
+
+model MidUserLedger {
+  id          BigInt   @id(map: "pk_mid_user_ledger") @default(autoincrement())
+  user_id     BigInt   @map("userId")
+  ledger_id   BigInt   @map("ledgerId")
+  status      Int      @db.SmallInt
+  create_time DateTime @map("createTime") @db.Timestamp(6)
+  update_time DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@unique([user_id, ledger_id], map: "uk__user_id__ledger_id")
+  @@map("mid_user_ledger")
+}
+
+model Record {
+  id               BigInt   @id(map: "pk_record") @default(autoincrement())
+  user_category_id BigInt   @map("userCategoryId")
+  name             String   @db.VarChar(100)
+  amount           Decimal  @db.Decimal(18, 6)
+  record_type      Int      @map("recordType") @db.SmallInt
+  remark           String?  @db.VarChar(200)
+  status           Int      @db.SmallInt
+  create_time      DateTime @map("createTime") @db.Timestamp(6)
+  update_time      DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("record")
+}
+
+model SysCategory {
+  id                  BigInt   @id(map: "pk_sys_category") @default(autoincrement())
+  classification_name String   @map("classificationName") @db.VarChar(100)
+  name                String   @db.VarChar(100)
+  icon                String
+  status              Int      @db.SmallInt
+  create_time         DateTime @map("createTime") @db.Timestamp(6)
+  update_time         DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("sys_category")
+}
+
+model Team {
+  id           BigInt   @id(map: "pk_team") @default(autoincrement())
+  user_id      BigInt   @map("userId")
+  team_user_id BigInt   @map("teamUserId")
+  status       Int      @db.SmallInt
+  create_time  DateTime @map("createTime") @db.Timestamp(6)
+  update_time  DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("team")
+}
+
+model User {
+  id         BigInt   @id(map: "pk_user") @default(autoincrement())
+  name       String   @db.VarChar(100)
+  gender     Int?     @db.SmallInt
+  avatar     String?
+  email      String?  @db.VarChar(100)
+  phone      String?  @db.VarChar(100)
+  signature  String?  @db.VarChar(200)
+  password   String   @db.VarChar(512)
+  salt       String   @db.VarChar(256)
+  status     Int      @db.SmallInt
+  createTime DateTime @map("create_time") @db.Timestamp(6)
+  updateTime DateTime @map("update_time") @db.Timestamp(6)
+
+  @@map("user")
+}
+
+model UserCategory {
+  id                  BigInt   @id(map: "pk_user_category") @default(autoincrement())
+  ledger_id           BigInt   @map("ledgerId")
+  classification_name String   @map("classificationName") @db.VarChar(100)
+  name                String   @db.VarChar(100)
+  icon                String
+  status              Int      @db.SmallInt
+  create_time         DateTime @map("createTime") @db.Timestamp(6)
+  update_time         DateTime @map("updateTime") @db.Timestamp(6)
+
+  @@map("user_category")
+}
