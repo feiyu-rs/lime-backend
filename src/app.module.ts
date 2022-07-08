@@ -9,6 +9,10 @@ import { UserModule } from './module/user.module';
       driver: MercuriusDriver,
       graphiql: true,
       autoSchemaFile: 'schema.gql',
+      buildSchemaOptions: {
+        // 使用 Int 来表示 number 类型
+        numberScalarMode: 'integer',
+      },
     }),
     UserModule,
   ],

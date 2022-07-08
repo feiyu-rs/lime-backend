@@ -4,6 +4,8 @@
 
 type User {
   id: BigInt!
+  createTime: DateTime!
+  updateTime: DateTime!
   name: String!
   gender: Int
   avatar: String
@@ -13,8 +15,6 @@ type User {
   password: String!
   salt: String!
   status: Int!
-  createTime: DateTime!
-  updateTime: DateTime!
 }
 
 """
