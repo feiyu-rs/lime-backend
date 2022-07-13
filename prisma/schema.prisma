@@ -117,7 +117,7 @@ model User {
   password   String   @db.VarChar(512)
   salt       String   @db.VarChar(256)
   status     Int      @db.SmallInt
-  createTime DateTime @map("create_time") @db.Timestamp(6)
+  createTime DateTime @map("create_time") @db.Timestamptz(6)
   updateTime DateTime @map("update_time") @db.Timestamp(6)
 
   @@map("user")
