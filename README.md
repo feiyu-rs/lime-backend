@@ -1,6 +1,6 @@
 <p align="center">
-	<img alt="logo" height="100px" width="100px" src="https://raw.githubusercontent.com/feiyu-rs/whale-docs/main/lime/readme_imgs/lime_logo.png">
-	<img alt="logo" height="100px" width="100px" src="https://raw.githubusercontent.com/feiyu-rs/whale-docs/main/lime-backend/images/nestjs_logo.png">
+	<img alt="logo" height="100px" width="100px" src="https://raw.githubusercontent.com/feiyu-rs/whale-docs/main/public/images/logo/lime_logo.png">
+	<img alt="logo" height="100px" width="100px" src="https://raw.githubusercontent.com/feiyu-rs/whale-docs/main/public/images/logo/nestjs_logo.png">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Lime Backend [青柠记账后端]</h1>
 <h4 align="center">Lime Backend 是一个用 Nest 开发的后端项目，并使用了 Fastify、TypeScript、Graphql、Prisma、PostgreSQL 等技术。</h4>
